@@ -12,6 +12,7 @@
     <script src="../deps/jquery-ui-1.10.0.custom.js"></script>
     <script src="../deps/jquery.htmlClean.js"></script>
     <script src="../deps/rangy-core-1.2.3.js"></script>
+    <script src="../deps/rangy-selectionsaverestore.js"></script>
     <script src="hallo.js"></script>
     <title>Hallo example</title>
   </head>
@@ -21,7 +22,6 @@
     <div class="editable">
       <p>Hello <a href="http://test.de/">World</a> Test 123</p>
     </div>
-    <pre class="code"></pre>
 
     <script>
       jQuery(function() {
@@ -34,15 +34,15 @@
             'hallolink': {},
             'halloreundo': {},
             'hallocleanhtml': {
-            	format: false,
-            	allowedTags: ['p', 'em', 'strong', 'br', 'div', 'ol', 'ul', 'li']
+              format: false,
+              allowedTags: ['p', 'em', 'strong', 'br', 'div', 'ol', 'ul', 'li', 'a'],
+              allowedAttributes: ['style']
             }
           },
           editable: true
         });
         jQuery('.editable').bind('hallomodified', function(event, data) {
             jQuery('#modified').html("Editables modified");
-    		$('.code').text(data.content);
         });
         jQuery('.editable').bind('halloselected', function(event, data) {
             jQuery('#modified').html("Selection made");
